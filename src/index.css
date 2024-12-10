@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 bg-white touch-manipulation font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply w-full rounded-xl border-2 border-gray-200 shadow-sm focus:border-bauhaus-primary focus:ring-bauhaus-primary transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply relative overflow-hidden bg-bauhaus-primary text-white px-6 py-3 rounded-none font-display font-bold 
+           hover:shadow-lg transition-all duration-300 transform hover:scale-105
+           before:content-[''] before:absolute before:inset-0 before:bg-bauhaus-secondary
+           before:translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300
+           hover:before:skew-x-12;
+  }
+
+  .bauhaus-shape {
+    @apply absolute pointer-events-none;
+  }
+
+  .bauhaus-circle {
+    @apply rounded-full bg-bauhaus-yellow;
+  }
+
+  .bauhaus-square {
+    @apply bg-bauhaus-blue transform rotate-45;
+  }
+
+  .bauhaus-triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    @apply bg-bauhaus-red;
+  }
+
+  .gradient-border {
+    @apply relative border-2 border-bauhaus-primary rounded-none
+           before:content-[''] before:absolute before:inset-0
+           before:bg-gradient-to-r before:from-bauhaus-red before:to-bauhaus-blue
+           before:opacity-0 hover:before:opacity-100 before:transition-opacity;
+  }
+
+  .bauhaus-grid {
+    background-image: linear-gradient(to right, #000 1px, transparent 1px),
+                      linear-gradient(to bottom, #000 1px, transparent 1px);
+    background-size: 20px 20px;
+    @apply opacity-5;
+  }
+}
+
+.animate-shape {
+  animation: shapeFloat 6s ease-in-out infinite;
+}
+
+@keyframes shapeFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.bauhaus-pattern {
+  background-image: radial-gradient(circle at 1px 1px, black 1px, transparent 0);
+  background-size: 20px 20px;
+  @apply opacity-5;
+}
+
+/* Existing utility classes remain unchanged */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+}
